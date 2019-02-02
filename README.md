@@ -102,16 +102,16 @@
     ```
     
  - ## 기타
-  ```
-  - cmd(ctrl) + c
+   ```
+    - cmd(ctrl) + c
      -> 서버 종료
      
-  - $ pip uninstall django
+   - $ pip uninstall django
         -> django 삭제
         
-  - $ pip install django --(특정버전)
+    - $ pip install django --(특정버전)
         -> 특정버전 django 설치 가능
         
-  - $ deactivate
+    - $ deactivate
         -> 가상머신 종료
   ```
