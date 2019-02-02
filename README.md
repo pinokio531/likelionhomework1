@@ -67,6 +67,10 @@
         
      - $ cd (프로젝트이름)
            -> 해당 프로젝트로 들어감
+           
+     - $ python manage.py startapp myapp
+           -> myapp 이라는 프론트작업 환경을 만들어줌
+           -> myapp 은 편의상 설정한 이름으로, 개발자가 원하는 대로 이름을 지어주면 됨
         
      - myapp 폴더에 'templates' 폴더 생성
            -> html 파일을 만드는 폴더가 됨
