@@ -13,9 +13,9 @@ Editor : VS_Code
           -> python 버전이 제대로 나온다면 설치완료
     ```
     
-    * Mac OS의 경우 python 버전이 기본으로 깔려 있으므로 '$ python3 --version' 으로 확인해야함
-    * python3 명령어가 쓰기 귀찮을 경우
      ```
+     * Mac OS의 경우 python 버전이 기본으로 깔려 있으므로 '$ python3 --version' 으로 확인해야함
+     * python3 명령어가 쓰기 귀찮을 경우
       - /user/ 위치에서 '$ ls -a'
       
       - 숨김 파일 중 .bash_profile 을 찾은 후
@@ -101,7 +101,7 @@ Editor : VS_Code
       -> 브라우저에서 작동하는 파일
     ```
     
- *기타*
+ - ## 기타
   ```
   - cmd(ctrl) + c
      -> 서버 종료
