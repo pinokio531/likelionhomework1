@@ -1,9 +1,9 @@
 # likelionhomework1
 2019 멋사 운영진 과제 1차
 
-Languae : Python
-FrameWork : Django(Full-Stack FrameWork)
-Editor : VS_Code
+- Languae : Python
+- FrameWork : Django(Full-Stack FrameWork)
+- Editor : VS_Code
 
 # 내용
   - ## Python Setting
