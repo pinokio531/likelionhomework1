@@ -106,7 +106,7 @@
     ```
  - ## Admin 등록하기
    ```
-   - $ python manage.py create superuser
+   - $ python manage.py createsuperuser
         -> 아이디, 이메일, 패스워드 입력해서 계정 등록
         -> /admin/ 들어갈 때 해당계정을 이용해서 접근가능
    ```
@@ -123,6 +123,114 @@
    - admin.py 에서 해당 모델을 'imort' 하고, 'admin.site.register(모델명)' 로 적용한다
    - 이후 부터 '/admin/' 라우터로 들어가 실제 내용을 작성할 수 있다.
    ```
+   
+ - ## 로그인 구현하기_1 (기본세팅)
+    ```
+   - html 파일
+      <form method = "POST" action="{%url 'login'%}"> //http 통신형태 지정, 통신할 url 지정
+      {% csrf_token %}                                //보안을 위해서 선언
+        /~ 내용 ~/
+      </form>
+      
+   - views.py
+    -> 모듈 추가
+        from .models import Blog //mirgration 한 model
+        from .models import Score
+
+        from django.shortcuts import redirect
+        from django.contrib.auth.models import User
+        from django.contrib import auth
+   ```
+ - ## 로그인 구현하기_2 (회원가입)
+    ```
+    def join(request):
+    
+    //html 에서 통신방법을 확인
+    if request.method == 'POST':
+    
+        //password, password_confirm 으로 비밀번호 확인
+        if request.POST['userpassword'] == request.POST['userpassword_confirm']
+        
+            //계정 생성
+            user = User.objects.create_user(username=request.POST['username'], password=request.POST["userpassword"])
+            
+            //로그인
+            auth.login(request, user)
+            return redirect('login')
+    return render(request, 'join.html')
+    ```
+ - ## 로그인 구현하기_3 (로그인)
+    ```
+    def home(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['userpassword']
+        
+        //username과 password를 통해 계정확인
+        user = auth.authenticate(request, username=username, password=password)
+        
+        //계정이 None이 아니면, 즉 계정이 존재하면 로그인 실행
+        if user is not None:
+            auth.login(request, user)
+            return redirect('main')
+        else:
+            return render(request, 'home.html', {'error' : 'username or password is incorrect.'})
+    else:
+        return render(request, 'home.html')
+    ```
+ - ## 로그인 구현하기_3 (로그아웃)
+    ```
+    def logout(request):
+    if request.method == 'POST':
+    
+        //로그아웃 하기
+        auth.logout(request)
+        redirect('home')
+    return render(request, 'home.html')
+    ```
+    
+ - ## Paginator 구현하기
+    ```
+    - html
+        <form>
+
+        {% if posts.number != 1%}
+            <a href="?page=1">처음</a>
+        {% else %}
+            <a> 처음 페이지 입니다.</a>
+        {% endif %}
+
+       {% if posts.number > 1 %}  //posts.number는 현재 페이지
+           <a href="?page={{posts.previous_page_number}}">이전</a> //posts.previous_page_number는 (현재페이지 -1) 페이지 번호
+       {% endif %}
+
+        (
+        <span>{{posts.number}}</span>
+        /
+        <span>{{posts.paginator.num_pages}}</span>
+        )
+
+       {% if posts.number < posts.paginator.num_pages %} //posts.paginator.num_pages는 전체페이지 수 = 마지막 페이지 번호
+           <a href="?page={{posts.next_page_number}}">다음</a>
+       {% endif %}
+       
+       {% if posts.number != posts.paginator.num_pages%}
+           <a href="?page={{posts.paginator.num_pages}}">마지막</a>
+       {% else %}
+           <a> 마지막 페이지 입니다.</a>
+       {% endif %}
+       </form>
+       
+    - views.py
+        - 모듈추가
+            -> from django.core.paginator import Paginator
+            
+        blog_list = Blog.objects.all()      //db내 blog 모델에 해당하는 objects 전부 출력
+        paginator = Paginator(blog_list, 2) //2개가 한페이지가 되도록 함
+        page = request.GET.get('page')      //html에서 보여줄 페이지 번호를 get으로 수신
+        posts = paginator.get_page(page)    //해당 paginator 적용
+        return render(request, 'home.html', {'posts':posts})
+    ```
     
  - ## 기타
    ```
