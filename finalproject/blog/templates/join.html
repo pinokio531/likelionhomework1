@@ -1,0 +1,24 @@
+<div class = "container">
+
+    <h1>회원가입 화면입니다.</h1>
+
+    <form method = "POST" action="{%url 'join'%}">
+        {% csrf_token %}
+        Username:
+        <br>
+        <input name="username" type="text" value="">
+        <br>
+        <br>
+        Password:
+        <br>
+        <input name="userpassword" type="password" value="">
+        <br>
+        <br>
+        Confirm Password:
+        <br>
+        <input name="userpassword_confirm" type="password" value="">
+        <br>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Complete">
+    </form>
+</div>

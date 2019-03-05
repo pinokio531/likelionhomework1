@@ -1,0 +1,25 @@
+<div class = "container">
+
+    <h1>로그인 화면입니다.</h1>
+    <h1>{{error}}</h1>
+
+    <form method = "POST" action="{%url 'login'%}">
+    {% csrf_token %}
+        Username:
+        <br>
+        <input name="username" type="text" value="">
+        <br>
+        <br>
+        Password:
+        <br>
+        <input name="userpassword" type="password" value="">
+        <br>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+
+    <form action="{%url 'join'%}">
+        <input class="btn btn-primary" type="submit" value="SignUp">
+    </form>
+
+</div>

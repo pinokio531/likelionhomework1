@@ -1,0 +1,45 @@
+<h1>김성민 님의 성적 확인 블로그 입니다.</h1>
+
+{% for blog in posts %}
+<form>
+    <h1>제목</h1>
+    <h1>{{blog.title}}</h1>
+    <br>
+    <h3>게시물 작성일 : {{blog.published_date}}</h3>
+    <br>
+    <h1>내용</h1>
+    <h1>{{blog.body}}</h1>
+    <br>
+    <br>
+</form>
+{%endfor%}
+
+<form>
+
+    {% if posts.number != 1%}
+        <a href="?page=1">처음</a>
+    {% else %}
+        <a> 처음 페이지 입니다.</a>
+    {% endif %}
+
+    {% if posts.number > 1 %}
+        <a href="?page={{posts.previous_page_number}}">이전</a>
+    {% endif %}
+
+    (
+    <span>{{posts.number}}</span>
+    /
+    <span>{{posts.paginator.num_pages}}</span>
+    )
+
+    {% if posts.number < posts.paginator.num_pages %}
+        <a href="?page={{posts.next_page_number}}">다음</a>
+    {% endif %}
+
+    {% if posts.number != posts.paginator.num_pages%}
+        <a href="?page={{posts.paginator.num_pages}}">마지막</a>
+    {% else %}
+        <a> 마지막 페이지 입니다.</a>
+    {% endif %}
+
+</form>
