@@ -1,4 +1,4 @@
-# likelionhomework1
+# likelionhomework
 2019 멋사 운영진 과제 페이지
 
 - Languae : Python
