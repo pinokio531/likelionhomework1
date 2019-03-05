@@ -1,15 +1,14 @@
 from django.shortcuts import render
+
 from .models import Blog
 from .models import Score
+
 from django.core.paginator import Paginator
-
 from django.shortcuts import redirect
-
 from django.contrib.auth.models import User
 from django.contrib import auth
 
 def login(request):
-    success = ''
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['userpassword']

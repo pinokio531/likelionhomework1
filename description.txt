@@ -1,0 +1,6 @@
+* Project 소개 *
+
+1. djangoproject -> hellow, world 출력
+2. secondproject -> 데이터베이스 다루기
+3. thirdproject -> 로그인, paginator 구현
+4. finalproject -> 로그인, paginator, db를 활용한 간단한 blog 제작 프로젝트
