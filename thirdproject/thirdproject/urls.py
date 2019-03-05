@@ -1,4 +1,4 @@
-"""secondproject URL Configuration
+"""thirdproject URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-import blog.views
+import login.views
+# from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', blog.views.home, name = "home"),
+    path('', login.views.home, name="home"),
+    path('signup/', login.views.signup, name="signup"),
+    path('logout/', login.views.logout, name="logout"),
+    path('main/', login.views.main, name="main"),
+
 ]

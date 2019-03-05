@@ -1,0 +1,8 @@
+<h1>홈화면 입니다.</h1>
+{% for blog in blogs.all%}
+    <h1>{{blog.title}}</h1>
+    <h1>{{blog.pub_date}}</h1>
+    <h1>{{blog.body}}</h1>
+    <br>
+    <br>
+{%endfor%}

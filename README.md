@@ -1,5 +1,5 @@
 # likelionhomework1
-2019 멋사 운영진 과제 1차
+2019 멋사 운영진 과제 페이지
 
 - Languae : Python
 - FrameWork : Django(Full-Stack FrameWork)
@@ -104,6 +104,25 @@
     - manage.py
         -> 브라우저에서 작동하는 파일
     ```
+ - ## Admin 등록하기
+   ```
+   - $ python manage.py create superuser
+        -> 아이디, 이메일, 패스워드 입력해서 계정 등록
+        -> /admin/ 들어갈 때 해당계정을 이용해서 접근가능
+   ```
+    
+ - ## Model 다루기
+   ```
+   - models.py 에서 'class (모델명)' 을 선언하고 각종 파라미터들을 입력한다
+   
+   - $ python manage.py makemigrations
+        -> db에 등록될 모델들을 확정한다.
+        -> default는 'sqlite3' 이지만 settings.py 에서 변경가능
+   - $ python manage.py migrate
+        -> 확정된 모델들을 db에 반영한다
+   - admin.py 에서 해당 모델을 'imort' 하고, 'admin.site.register(모델명)' 로 적용한다
+   - 이후 부터 '/admin/' 라우터로 들어가 실제 내용을 작성할 수 있다.
+   ```
     
  - ## 기타
    ```
