@@ -9,7 +9,6 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 
 def login(request):
-    success = ''
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['userpassword']
