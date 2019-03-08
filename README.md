@@ -50,7 +50,7 @@
      - $ python --version
            -> python 버전 다시 확인
         
-     - $ pip install django
+     - $ python -m pip install django
            -> python 프레임워크인 django 설치
     ```
         
